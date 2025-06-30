@@ -1,0 +1,11 @@
+.container {
+    padding: 1rem;
+}
+.title {
+    font-size: 2rem;
+    color: black;
+}
+.description {
+    font-size: 1rem;
+    color: gray;
+}
