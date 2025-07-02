@@ -17,10 +17,10 @@ type Props = {
     notes: Note[];
     totalPages: number;
   };
-  category?: string;
+  tag?: string;
 };
 
-export default function NotesClient({ initialData, category }: Props) {
+export default function NotesClient({ initialData, tag }: Props) {
   const [searchText, setSearchText] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,11 +29,11 @@ export default function NotesClient({ initialData, category }: Props) {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [debouncedSearch, category]);
+  }, [debouncedSearch, tag]);
 
   const notes = useQuery({
-    queryKey: ["notes", debouncedSearch, currentPage, category],
-    queryFn: () => fetchNotes(debouncedSearch, currentPage, 9, category),
+    queryKey: ["notes", debouncedSearch, currentPage, tag],
+    queryFn: () => fetchNotes(debouncedSearch, currentPage, 9, tag),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
     initialData,
